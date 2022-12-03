@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -24,7 +25,14 @@ public class Server implements Runnable {
 
     @Override
     public void run() {
-//      Port (Kan også tilføje IP, men hvordan?):
+//-------------------------------------NOTE-----------------------------------------------------------
+//      Port (Kan også tilføje IP, men hvordan?):                                                   //
+//      Se: https://docs.oracle.com/javase/7/docs/api/java/net/ServerSocket.html                    //
+//      og: https://stackoverflow.com/questions/14976867/how-can-i-bind-serversocket-to-specific-ip //
+//      InetAddress addr = InetAddress.getByName("127.0.0.1");                                      //
+//      server = new ServerSocket(9999, 0, addr);                                                   //
+//----------------------------------------------------------------------------------------------------
+
         try {
             server = new ServerSocket(9999);
             threadPool = Executors.newCachedThreadPool();
